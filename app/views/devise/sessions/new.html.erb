@@ -1,0 +1,47 @@
+<% title "Sign in" %>
+<div class="bs-docs-section">
+  <div class="page-header">
+    <div class="row">
+      <div class="col-lg-4 col-lg-offset-3">
+        <h2>Log In</h2>
+      </div>
+    </div>
+
+    <br>
+    <div class="row">
+      <div class="col-lg-6 col-lg-offset-3">
+        <div class="well">
+
+          <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name) , :validate => true) do |f| %>
+
+          <%= devise_error_messages! %>
+
+          <%= f.text_field :email, label: "Email or Username ", placeholder: "Email or Username",
+          autofocus: true, help: "Can't be blank", icon: "user" ,:validate => true%>
+
+          <%= f.password_field :password, label: "Password", placeholder: "Password",
+          autocomplete: "off", help: "Can't be blank", icon: "pencil" ,:validate => true%>
+
+          <% if devise_mapping.rememberable? -%>
+          <%= f.check_box :remember_me %>
+          <% end %>
+
+          <div class="row">
+            <div class="col-lg-4 text-center">
+              <%= f.button "Log in", class: "btn btn-block btn-primary" %>
+            </div>
+          </div>
+
+          <% end %>
+
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+  </div>
+</div>
+
+

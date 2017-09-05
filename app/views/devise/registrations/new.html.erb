@@ -1,0 +1,50 @@
+<% title "Sign Up" %>
+<div class="bs-docs-section">
+  <div class="page-header">
+    <div class="row">
+      <div class="col-lg-6 col-lg-offset-3">
+        <h2>Sign Up</h2>
+      </div>
+    </div>
+
+    <br>
+    <div class="row">
+      <div class="col-lg-6 col-lg-offset-3">
+        <div class="well">
+
+          <%= bootstrap_form_for(resource, as: resource_name,
+          url: registration_path(resource_name) , validate: true) do |f| %>
+
+          <%= devise_error_messages! %>
+
+          <%= f.text_field :name, label: "Name", placeholder: "Name",
+          help: "Can't be blank", icon: "user"%>
+
+          <% if @email.present? %>
+            <%= f.email_field :email, value: @email, label: "Email", placeholder: "Email",
+            icon: "envelope", readonly: true %>
+          <% else %>
+            <%= f.email_field :email,:validate => { :presence => true, :uniqueness => true}, label: "Email", placeholder: "Email",
+            help: "Can't be blank", icon: "envelope" %>
+          <% end %>
+          <%= f.password_field :password, :validate => true, label: "Password", placeholder: "Password", icon: "pencil",
+          autocomplete: "off", help: "8 characters minimum" %>
+
+          <%= f.password_field :password_confirmation, label: "Password Again!", placeholder: "Password Again!", icon: "pencil", autocomplete: "off" %>
+
+
+          <div class="row">
+            <div class="col-lg-4 text-center">
+              <%= f.button "Sign up", class: "btn btn-block btn-default" %>
+            </div>
+          </div>
+
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+    <br>
+  </div>
+</div>
+
